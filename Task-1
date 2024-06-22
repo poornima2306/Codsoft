@@ -1,0 +1,35 @@
+Task-1
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class NumberGuesser {
+  public static void main(String args[]) {
+    Scanner sc = new Scanner(System.in);
+    Random rn = new Random();
+    int number = rn.nextInt(100) + 1;
+    int count = 0;
+    int maxAttempts = 15;
+
+    while (true) {
+      System.out.print("Take a guess between 1 and 100: ");
+      int guess = sc.nextInt();
+      count++;
+
+      if (guess == number) {
+        System.out.println("You nailed it! It took you " + count + " tries.");
+        break;
+      } else if (guess < number) {
+        System.out.println("Your guess is too low, try again!");
+      } else {
+        System.out.println("Your guess is too high, try again!");
+      }
+
+      if (count >= maxAttempts) {
+        System.out.println("Sorry, you've used up all your guesses! The correct answer was " + number + ".");
+        break;
+      }
+    }
+    sc.close();
+  }
+}
